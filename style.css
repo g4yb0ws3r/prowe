@@ -1,0 +1,302 @@
+:root {
+    /* Calm, deep slate theme */
+    --bg-main: #0a0b10;
+    --text-primary: #e2e8f0;
+    --text-secondary: #94a3b8;
+
+    --accent-pomodoro: #fca5a5;
+    /* soft red */
+    --accent-short: #6ee7b7;
+    /* soft mint */
+    --accent-long: #93c5fd;
+    /* soft blue */
+
+    --current-accent: var(--accent-pomodoro);
+
+    --glass-bg: rgba(20, 22, 30, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, text-shadow 0.5s ease;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Ambient Background Orbs */
+.ambient-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.15;
+    transition: background-color 1s ease;
+}
+
+.glow-1 {
+    width: 60vw;
+    height: 60vw;
+    top: -20vh;
+    left: -10vw;
+    background-color: var(--current-accent);
+}
+
+.glow-2 {
+    width: 50vw;
+    height: 50vw;
+    bottom: -10vh;
+    right: -10vw;
+    background-color: #312e81;
+    /* deep indigo */
+}
+
+.glow-3 {
+    width: 40vw;
+    height: 40vw;
+    top: 30vh;
+    left: 40vw;
+    background-color: #1e1b4b;
+    /* ultra deep purple */
+}
+
+/* App Container (Glassmorphism) */
+.app-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 2rem;
+    padding: 3.5rem;
+    width: 90%;
+    max-width: 480px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    margin-bottom: 2rem;
+}
+
+.app-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.app-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* Mode Selector Tabs */
+.mode-selector {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+}
+
+.mode-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.6rem 1rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+    color: var(--text-primary);
+}
+
+.mode-btn.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--current-accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Task Input */
+.task-container {
+    margin-bottom: 2rem;
+}
+
+.task-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1.05rem;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.task-input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--current-accent);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.task-input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Timer Display */
+.timer-display {
+    margin-bottom: 3rem;
+}
+
+.timer-asset {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    display: block;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 10px var(--current-accent));
+    transition: filter 0.5s ease;
+}
+
+.time {
+    font-size: 6.5rem;
+    font-weight: 300;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: var(--current-accent);
+    text-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.control-btn {
+    border: none;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 1rem 2.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.05em;
+}
+
+.primary-btn {
+    background: var(--current-accent);
+    color: var(--bg-main);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
+}
+
+.primary-btn:active {
+    transform: translateY(1px);
+}
+
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Easter Egg styling (Undertale Reference) */
+.easter-egg {
+    margin-top: 2rem;
+    opacity: 0;
+    transition: opacity 1s ease;
+    height: 0;
+    overflow: hidden;
+}
+
+.easter-egg.visible {
+    opacity: 1;
+    height: auto;
+    margin-top: 2rem;
+}
+
+@font-face {
+    font-family: 'Comic Sans MS';
+    /* Just relying on system fallback for the joke font, commonly available */
+    src: local('Comic Sans MS');
+}
+
+.sans-asset {
+    width: 60px;
+    height: 60px;
+    vertical-align: middle;
+    margin-right: 15px;
+    animation: jitter 0.1s infinite;
+}
+
+.sans-dialogue {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    color: white;
+    font-size: 1.1rem;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    animation: jitter 0.1s infinite;
+    display: inline-block;
+}
+
+@keyframes jitter {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(1px, 1px);
+    }
+
+    50% {
+        transform: translate(-1px, 0);
+    }
+
+    75% {
+        transform: translate(0, -1px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}

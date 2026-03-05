@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aesthetic Pomodoro</title>
+    <!-- Outfit Font for calm, modern aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Ambient background elements -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <main class="app-container glass-panel">
+        <header>
+            <h1 class="app-title">Focus.</h1>
+            <p class="app-subtitle" id="subtitle">Stay calm and productive.</p>
+        </header>
+
+        <nav class="mode-selector">
+            <button class="mode-btn active" data-mode="pomodoro">Pomodoro</button>
+            <button class="mode-btn" data-mode="shortBreak">Short Break</button>
+            <button class="mode-btn" data-mode="longBreak">Long Break</button>
+        </nav>
+
+        <div class="task-container">
+            <input type="text" id="taskInput" class="task-input" placeholder="What are you focusing on?"
+                autocomplete="off" />
+        </div>
+
+        <section class="timer-display">
+            <img src="timer.svg" alt="Timer" class="timer-asset" />
+            <div class="time" id="timeDisplay">25:00</div>
+        </section>
+
+        <section class="controls">
+            <button class="control-btn primary-btn" id="startBtn">Start</button>
+            <button class="control-btn secondary-btn" id="resetBtn">Reset</button>
+        </section>
+
+        <!-- Undertale Easter Egg - Hidden natively, revealed via JS at specific times -->
+        <div id="easterEgg" class="easter-egg">
+            <img src="sans.svg" alt="Sans" class="sans-asset" />
+            <span class="sans-dialogue">* Do you wanna have a bad time? eee...</span>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
