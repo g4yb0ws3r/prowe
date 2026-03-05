@@ -300,3 +300,91 @@ header {
         transform: translate(0, 0);
     }
 }
+
+/* Session Log */
+.log-container {
+    margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: left;
+    max-height: 200px;
+    overflow-y: auto;
+    /* Custom Scrollbar for webkit */
+    scrollbar-width: thin;
+    scrollbar-color: var(--current-accent) rgba(255, 255, 255, 0.05);
+}
+
+.log-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.log-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.log-container::-webkit-scrollbar-thumb {
+    background: var(--current-accent);
+    border-radius: 10px;
+}
+
+.log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+}
+
+.log-header h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.pomodoro-counter {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+#pomodoroCount {
+    color: var(--accent-pomodoro);
+    font-weight: 600;
+}
+
+.session-log {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.log-entry {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    border-left: 4px solid transparent;
+}
+
+.log-entry.pomodoro {
+    border-left-color: var(--accent-pomodoro);
+}
+
+.log-entry.shortBreak {
+    border-left-color: var(--accent-short);
+}
+
+.log-entry.longBreak {
+    border-left-color: var(--accent-long);
+}
+
+.log-time {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}

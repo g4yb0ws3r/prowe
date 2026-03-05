@@ -46,6 +46,18 @@
             <button class="control-btn secondary-btn" id="resetBtn">Reset</button>
         </section>
 
+        <section class="log-container">
+            <div class="log-header">
+                <h2>Session Log</h2>
+                <div class="pomodoro-counter">
+                    Pomodoros: <span id="pomodoroCount">0</span>
+                </div>
+            </div>
+            <ul id="sessionLog" class="session-log">
+                <!-- Log entries will be added here dynamically -->
+            </ul>
+        </section>
+
         <!-- Undertale Easter Egg - Hidden natively, revealed via JS at specific times -->
         <div id="easterEgg" class="easter-egg">
             <img src="sans.svg" alt="Sans" class="sans-asset" />

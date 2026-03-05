@@ -5,6 +5,8 @@ const modeBtns = document.querySelectorAll('.mode-btn');
 const root = document.documentElement;
 const easterEgg = document.getElementById('easterEgg');
 const subtitle = document.getElementById('subtitle');
+const sessionLog = document.getElementById('sessionLog');
+const pomodoroCountDisplay = document.getElementById('pomodoroCount');
 
 // Timer configurations in seconds
 const MODES = {
@@ -24,6 +26,7 @@ let currentMode = 'pomodoro';
 let timeLeft = MODES[currentMode];
 let isRunning = false;
 let timerInterval = null;
+let pomodorosCompleted = 0;
 
 // Audio context for the "eee" Sans sound effect (generated procedurally)
 let audioCtx = null;
@@ -100,6 +103,7 @@ function startTimer() {
 
         if (timeLeft <= 0) {
             pauseTimer();
+            logSession();
             // Optional: play an alarm sound here
             alert("Session complete!");
             resetTimer();
@@ -173,6 +177,32 @@ modeBtns.forEach(btn => {
         setMode(e.target.getAttribute('data-mode'));
     });
 });
+
+function logSession() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    let logMessage = "";
+
+    const li = document.createElement('li');
+    li.classList.add('log-entry');
+    li.classList.add(currentMode);
+
+    const taskName = taskInput && taskInput.value.trim() !== "" ? taskInput.value.trim() : "";
+
+    if (currentMode === 'pomodoro') {
+        pomodorosCompleted++;
+        pomodoroCountDisplay.textContent = pomodorosCompleted;
+        logMessage = taskName ? `Focused on "${taskName}"` : "Pomodoro completed";
+    } else if (currentMode === 'shortBreak') {
+        logMessage = "Short Break taken";
+    } else if (currentMode === 'longBreak') {
+        logMessage = "Long Break taken";
+    }
+
+    li.innerHTML = `<span class="log-text">${logMessage}</span><span class="log-time">${timeString}</span>`;
+
+    sessionLog.prepend(li);
+}
 
 // Initialize
 updateDisplay();
